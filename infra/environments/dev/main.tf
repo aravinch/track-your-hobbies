@@ -22,3 +22,17 @@ module "resource_group" {
     managed_by  = "terraform"
   }
 }
+
+module "container_registry" {
+  source = "../../modules/container_registry"
+
+  name                = "acrhobbies${var.environment}"
+  resource_group_name = module.resource_group.rg_name
+  location            = module.resource_group.rg_location
+
+  tags = {
+    environment = var.environment
+    project     = "hobbies-tracker"
+    managed_by  = "terraform"
+  }
+}
