@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 5000
 
 # Command to run when container starts
-CMD ["python", "main.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "main:app"]
