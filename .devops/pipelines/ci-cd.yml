@@ -40,7 +40,8 @@ stages:
       displayName: 'Lint — flake8'
 
     - script: |
-        pytest app/tests/ -v
+        cd app
+        pytest tests/ -v
       displayName: 'Unit tests — pytest'
 
 # ─────────────────────────────────────
