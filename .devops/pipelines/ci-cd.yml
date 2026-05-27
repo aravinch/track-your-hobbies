@@ -102,6 +102,10 @@ stages:
         inlineScript: |
           cd infra/environments/dev
           terraform plan -out=tfplan
+     env:
+       TF_VAR_subscription_id: $(TF_VAR_subscription_id)
+       TF_VAR_environment: $(TF_VAR_environment)
+       TF_VAR_location: $(TF_VAR_location)
 
     - task: AzureCLI@2
       displayName: 'Terraform Apply'
@@ -112,6 +116,10 @@ stages:
         inlineScript: |
           cd infra/environments/dev
           terraform apply -auto-approve tfplan
+        env:
+       TF_VAR_subscription_id: $(TF_VAR_subscription_id)
+       TF_VAR_environment: $(TF_VAR_environment)
+       TF_VAR_location: $(TF_VAR_location)
 
 # ─────────────────────────────────────
 # STAGE 4 — Deploy to Azure App Service
