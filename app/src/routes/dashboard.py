@@ -8,11 +8,12 @@ from sqlalchemy import func
 
 dashboard_bp = Blueprint("dashboard", __name__)
 
+
 # GET /dashboard — summary of all hobbies
 @dashboard_bp.route("/dashboard", methods=["GET"])
 def dashboard():
     total_hobbies = Hobby.query.count()
-    total_hours   = db.session.query(func.sum(Hobby.hours_spent)).scalar() or 0
+    total_hours = db.session.query(func.sum(Hobby.hours_spent)).scalar() or 0
 
     # Group by category
     categories = db.session.query(

@@ -4,6 +4,7 @@
 
 import os
 
+
 class Config:
     # Database connection — reads from environment variable
     SQLALCHEMY_DATABASE_URI = os.getenv(
