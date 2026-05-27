@@ -19,3 +19,6 @@ Thumbs.db
 # SQLite database
 *.db
 instance/
+#Project-specific
+# Open .gitignore and add
+project_notes.txt
