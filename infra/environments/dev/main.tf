@@ -36,3 +36,23 @@ module "container_registry" {
     managed_by  = "terraform"
   }
 }
+module "app_service" {
+  source = "../../modules/app_service"
+
+  plan_name           = "plan-hobbies-${var.environment}"
+  app_name            = "app-hobbies-${var.environment}"
+  resource_group_name = module.resource_group.rg_name
+  location            = module.resource_group.rg_location
+
+  docker_image      = "hobbies-tracker"
+  docker_image_tag  = "v2"
+  acr_login_server  = module.container_registry.login_server
+  acr_username      = module.container_registry.admin_username
+  acr_password      = module.container_registry.admin_password
+
+  tags = {
+    environment = var.environment
+    project     = "hobbies-tracker"
+    managed_by  = "terraform"
+  }
+}
