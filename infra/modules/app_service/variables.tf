@@ -41,3 +41,24 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+variable "sql_admin_username" {
+  description = "SQL Server admin username"
+  type        = string
+  sensitive   = true
+}
+
+variable "sql_admin_password" {
+  description = "SQL Server admin password"
+  type        = string
+  sensitive   = true
+}
+
+variable "sql_server_fqdn" {
+  description = "Fully qualified domain name of SQL server"
+  type        = string
+}
+
+variable "sql_database_name" {
+  description = "Name of the SQL database"
+  type        = string
+}
