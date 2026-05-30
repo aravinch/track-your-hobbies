@@ -77,10 +77,7 @@ resource "azurerm_mssql_server" "sql_server" {
   }
 }
 
-  tags = {
-    environment = var.environment
-  }
-}
+
 
 # SQL Database (~$5/month — Basic tier)
 resource "azurerm_mssql_database" "sql_db" {
