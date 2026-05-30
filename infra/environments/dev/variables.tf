@@ -16,6 +16,11 @@ variable "location" {
   default     = "East US"
 }
 
+variable "sql_location" {
+  description = "Location for SQL Server — may differ from main location"
+  type        = string
+  default     = "eastus2"
+}
 variable "sql_admin_username" {
   description = "SQL Server admin username"
   type        = string

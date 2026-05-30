@@ -67,7 +67,7 @@ module "app_service" {
 resource "azurerm_mssql_server" "sql_server" {
   name                         = "sql-hobbies-${var.environment}"
   resource_group_name          = module.resource_group.rg_name        # ← fixed
-  location                     = module.resource_group.rg_location    # ← fixed
+  location                     = var.sql_location    # ← fixed
   version                      = "12.0"
   administrator_login          = var.sql_admin_username
   administrator_login_password = var.sql_admin_password
