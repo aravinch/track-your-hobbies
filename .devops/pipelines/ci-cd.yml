@@ -92,8 +92,8 @@ stages:
           terraform init
       env:
         TF_VAR_subscription_id: $(TF_VAR_subscription_id)
-        TF_VAR_environment: $(TF_VAR_environment)
-        TF_VAR_location: $(TF_VAR_location)
+        TF_VAR_environment:     $(TF_VAR_environment)
+        TF_VAR_location:        $(TF_VAR_location)
 
     - task: AzureCLI@2
       displayName: 'Terraform Plan'
@@ -105,9 +105,12 @@ stages:
           cd infra/environments/dev
           terraform plan -out=tfplan
       env:
-        TF_VAR_subscription_id: $(TF_VAR_subscription_id)
-        TF_VAR_environment: $(TF_VAR_environment)
-        TF_VAR_location: $(TF_VAR_location)
+        TF_VAR_subscription_id:    $(TF_VAR_subscription_id)
+        TF_VAR_environment:        $(TF_VAR_environment)
+        TF_VAR_location:           $(TF_VAR_location)
+        # ✅ ADD TO PLAN STEP TOO
+        TF_VAR_sql_admin_username: $(SQL_ADMIN_USERNAME)
+        TF_VAR_sql_admin_password: $(SQL_ADMIN_PASSWORD)
 
     - task: AzureCLI@2
       displayName: 'Terraform Apply'
@@ -119,12 +122,12 @@ stages:
           cd infra/environments/dev
           terraform apply -auto-approve tfplan
       env:
-        TF_VAR_subscription_id: $(TF_VAR_subscription_id)
-        TF_VAR_environment: $(TF_VAR_environment)
-        TF_VAR_location: $(TF_VAR_location)
-        TF_VAR_sql_admin_username: ${{ secrets.SQL_ADMIN_USERNAME }}
-        TF_VAR_sql_admin_password: ${{ secrets.SQL_ADMIN_PASSWORD }}
-
+        TF_VAR_subscription_id:    $(TF_VAR_subscription_id)
+        TF_VAR_environment:        $(TF_VAR_environment)
+        TF_VAR_location:           $(TF_VAR_location)
+        # ✅ FIXED — Azure DevOps syntax
+        TF_VAR_sql_admin_username: $(SQL_ADMIN_USERNAME)
+        TF_VAR_sql_admin_password: $(SQL_ADMIN_PASSWORD)
 # ─────────────────────────────────────
 # STAGE 4 — Deploy to Azure App Service
 # ─────────────────────────────────────
