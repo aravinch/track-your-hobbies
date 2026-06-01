@@ -19,3 +19,4 @@ class Config:
         "pool_recycle": 1800,        # recycles connections every 30 mins
 
     }
+    
