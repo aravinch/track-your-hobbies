@@ -62,3 +62,15 @@ variable "sql_database_name" {
   description = "Name of the SQL database"
   type        = string
 }
+
+variable "appinsights_connection_string" {
+  description = "Application Insights connection string"
+  type        = string
+  sensitive   = true
+}
+
+variable "appinsights_instrumentation_key" {
+  description = "Application Insights instrumentation key"
+  type        = string
+  sensitive   = true
+}

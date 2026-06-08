@@ -31,3 +31,8 @@ variable "sql_admin_password" {
   type        = string
   sensitive   = true
 }
+
+variable "alert_email" {
+  description = "Email for monitoring alerts"
+  type        = string
+}

@@ -20,6 +20,10 @@ resource "azurerm_linux_web_app" "this" {
     "DOCKER_REGISTRY_SERVER_USERNAME" = var.acr_username
     "DOCKER_REGISTRY_SERVER_PASSWORD" = var.acr_password
     "DOCKER_ENABLE_CI"                = "false"
+    # ✅ NEW — Application Insights
+  "APPLICATIONINSIGHTS_CONNECTION_STRING" = var.appinsights_connection_string
+  "APPINSIGHTS_INSTRUMENTATIONKEY"        = var.appinsights_instrumentation_key
+  "ApplicationInsightsAgent_EXTENSION_VERSION" = "~3"
 
     # ✅ ADD THIS LINE
   "DATABASE_URL" = "mssql+pyodbc://${var.sql_admin_username}:${var.sql_admin_password}@${var.sql_server_fqdn}:1433/${var.sql_database_name}?driver=ODBC+Driver+18+for+SQL+Server"
