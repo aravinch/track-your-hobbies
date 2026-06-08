@@ -112,6 +112,7 @@ stages:
         TF_VAR_sql_admin_username: $(SQL_ADMIN_USERNAME)
         TF_VAR_sql_admin_password: $(SQL_ADMIN_PASSWORD)
         TF_VAR_sql_location:       $(sql_location)
+        TF_VAR_alert_email: $(alert_email)
 
     - task: AzureCLI@2
       displayName: 'Terraform Apply'
@@ -130,6 +131,7 @@ stages:
         TF_VAR_sql_admin_username: $(SQL_ADMIN_USERNAME)
         TF_VAR_sql_admin_password: $(SQL_ADMIN_PASSWORD)
         TF_VAR_sql_location:       $(sql_location)
+        TF_VAR_alert_email: $(alert_email)
 # ─────────────────────────────────────
 # STAGE 4 — Deploy to Azure App Service
 # ─────────────────────────────────────
