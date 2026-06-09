@@ -82,7 +82,6 @@ module "monitoring" {
   environment         = var.environment
   resource_group_name = module.resource_group.rg_name
   location            = module.resource_group.rg_location
-  app_service_id      = module.app_service.app_service_id  # ← need this output
   alert_email         = var.alert_email
 
   tags = {
