@@ -33,4 +33,6 @@ COPY . .
 EXPOSE 5000
 
 # CMD always last — command to run when container starts
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "main:app"]
+#CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "main:app"]
+CMD ["sh", "-c", "flask db upgrade && gunicorn --bind 0.0.0.0:5000 --workers 2 main:app"]
+

@@ -20,6 +20,7 @@ resource "azurerm_linux_web_app" "this" {
     "DOCKER_REGISTRY_SERVER_USERNAME" = var.acr_username
     "DOCKER_REGISTRY_SERVER_PASSWORD" = var.acr_password
     "DOCKER_ENABLE_CI"                = "false"
+    "FLASK_APP"                       = "main.py"
     # ✅ NEW — Application Insights
   "APPLICATIONINSIGHTS_CONNECTION_STRING" = var.appinsights_connection_string
   "APPINSIGHTS_INSTRUMENTATIONKEY"        = var.appinsights_instrumentation_key

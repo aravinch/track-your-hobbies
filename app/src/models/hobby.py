@@ -14,6 +14,7 @@ class Hobby(db.Model):
     category = db.Column(db.String(50), nullable=False)
     hours_spent = db.Column(db.Float, default=0.0)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    difficulty_level = db.Column(db.String(50), default="beginner")  # ✅ NEW
 
     def to_dict(self):
         # Converts database row to JSON-friendly dictionary
@@ -22,5 +23,6 @@ class Hobby(db.Model):
             "name":        self.name,
             "category":    self.category,
             "hours_spent": self.hours_spent,
-            "created_at":  self.created_at.strftime("%Y-%m-%d %H:%M")
+            "created_at":  self.created_at.strftime("%Y-%m-%d %H:%M"),
+            "difficulty_level": self.difficulty_level
         }
